@@ -18,5 +18,3 @@ players_current_squares = [0, 0]
 
 while players_current_squares[0] < 100 and players_current_squares[1] < 100:
 # TODO: implement game logic
-
-
