@@ -31,3 +31,5 @@ while players_current_squares[0] < 100 and players_current_squares[1] < 100:
     else squares[0] == squares[0]["reward"] or squares[0] == squares[1]["reward"]:
         squares[0] = squares[0] + 10
         print(f"Player 1 hit the reward square and went 10 squares forward")
+
+    print(f"Player 1 is on {squares[0]} now!")
