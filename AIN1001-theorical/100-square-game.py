@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 squares = [
 {
@@ -18,3 +18,16 @@ players_current_squares = [0, 0]
 
 while players_current_squares[0] < 100 and players_current_squares[1] < 100:
 # TODO: implement game logic
+    tmp = input("Player 1 please press enter.")
+    dice1 = randint(1,6)
+    squares[0] = squares[0] + dice1
+
+    print(f"Player 1 rolls {dice1}!")
+    
+    if squares[0] == squares[0]["penalty"] or squares[0] == squares[1]["penalty"]:
+        squares[0] = squares[0] - 10
+        print(f"Player 1 hit the penalty square and went 10 squares back, now It is on {squares[0]}")
+    
+    else squares[0] == squares[0]["reward"] or squares[0] == squares[1]["reward"]:
+        squares[0] = squares[0] + 10
+        print(f"Player 1 hit the reward square and went 10 squares forward")
