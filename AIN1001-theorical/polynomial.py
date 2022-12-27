@@ -1,3 +1,5 @@
+
+
 def parse_polynomial(polynomial_string):
     components = polynomial_string.split(" ")
     length = len(components)
@@ -5,14 +7,21 @@ def parse_polynomial(polynomial_string):
         return None
     polynomial_list = []
     for i in range(0, length, 2):
-        # TODO: implement the loop body
+        
+        polynomial_list.append(tuple([components[i], components[i+1]]))
+        
+        # The loop for parsing polynomial values
+        
     return polynomial_list
 
 
 def compute_polynomial(p, x_value):
     y_value = 0.0
     for component in p:
-        # TODO: implement the loop body
+        
+        y_value += (float(component[1]) * (x_value ** round(float(component[0]))))
+        
+        # The computing loop with the given variables and exponents
     return y_value
 
 
@@ -31,10 +40,11 @@ while polynomial is None:
     polynomial = parse_polynomial(user_input)
 print_polynomial(polynomial)
 print(polynomial)
+
 while True:
     user_input = input("Enter x value: ")
-    if # TODO: insert a condition to exit the loop :
+    if user_input == "quit":   # Condition for leaving the loop
         break
     x = float(user_input)
-    y = # TODO: make a call to the function
+    y = compute_polynomial(polynomial, x)  # Call to the function
     print(f"The value of the polynomial at {x} is {y:12.4f}")
