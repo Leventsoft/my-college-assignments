@@ -8,7 +8,7 @@ f = open("simulation.csv", "w")
 f.write("Time,Red,Blue,Green\n")
 
 for t in range(100):
-    
+
     # assume that the ball is in BLUE box
     r = random.random()
     if 0.0 <= r <= 0.2:
@@ -23,20 +23,18 @@ for t in range(100):
         blue_box -= 1
 
     # assume that the ball is in GREEN box
-    #r = random.random()
     if 0.0 <= r <= 0.4:
         print("Stay at the same box: GREEN")
-        
+
     elif 0.4 < r <= 1:
         print("move to the box: BLUE")
         blue_box += 1
         green_box -= 1
 
     # assume that the ball is in RED box
-    #r = random.random()
     if 0.0 <= r <= 0.4:
         print("Stay at the same box: RED")
-        
+
     elif 0.4 < r <= 1:
         print("move to the box: BLUE")
         blue_box += 1
