@@ -1,0 +1,3 @@
+Two  integers  are  said  to  be  amicable  or  friendly  if  each  number  is  the  sum  of  all  the  possible divisors of the other. One such pair is 220 and 284. Since the possible divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, and 110 which sum to 284 and the possible divisors of 284 are 1, 2, 4, 71, and 142 which sum to 220, then 220 and 284 are said to be friendly. 
+
+Implement a solution in C++ to find a pair of friendly numbers such that both integers are greater than 1100 and less than 1300.
