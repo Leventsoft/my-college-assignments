@@ -1,101 +1,77 @@
-#include <shapes.h>
+#include "shapes.h"
+#include <iostream>
+#include <cmath>
 
-int main(){
+using namespace std;
 
-   PlanarShape *planar[]=
+// Circle implementation
 
-             {
+Circle::Circle() : x(0), y(0), radius(1) {}
 
-               new Circle() , //unit circle at (0,0)
+Circle::Circle(double radius) : x(0), y(0), radius(radius) {}
 
-               new Square(), // unit square, top-left corner at (0,0)
+Circle::Circle(double x, double y) : x(x), y(y), radius(1) {}
 
-               new Circle(4,8), // unit circle at (4,8)
+Circle::Circle(double x, double y, double radius) : x(x), y(y), radius(radius) {}
 
-               new Square(15,16), // unit square, top-left corner at (15,16)
+double Circle::area() {
+    return M_PI * radius * radius;
+}
 
-               new Circle(23,42,108), // circle at (23,42), radius is 108
+double Circle::circumference() {
+    return 2 * M_PI * radius;
+}
 
-               new Square(4,8,15) // top-left corner at (4,8), edge length is 1 
+// Square implementation
 
-             };
+Square::Square() : x(0), y(0), edgeLength(1) {}
 
-   int lengthOfPlanar= sizeof(planar)/sizeof(PlanarShape*);
+Square::Square(double edgeLength) : x(0), y(0), edgeLength(edgeLength) {}
 
-  
+Square::Square(double x, double y) : x(x), y(y), edgeLength(1) {}
 
-   for (int i=0;i<lengthOfPlanar;++i)
+Square::Square(double x, double y, double edgeLength) : x(x), y(y), edgeLength(edgeLength) {}
 
-       cout << "Circumference of " << i << "th planar shape is "
+double Square::area() {
+    return edgeLength * edgeLength;
+}
 
-            << planar[i]->circumference() << endl ;
+double Square::circumference() {
+    return 4 * edgeLength;
+}
 
- 
+// Cube implementation
 
-   VolumetricShape *volumetric[]=
+Cube::Cube() : x(0), y(0), z(0), edgeLength(1) {}
 
-     {
+Cube::Cube(double edgeLength) : x(0), y(0), z(0), edgeLength(edgeLength) {}
 
-       new Sphere() , //unit sphere at the origin
+Cube::Cube(double x, double y, double z) : x(x), y(y), z(z), edgeLength(1) {}
 
-       new Cube(), // unit cube, top-left-rear corner is at the origin
+Cube::Cube(double x, double y, double z, double edgeLength) : x(x), y(y), z(z), edgeLength(edgeLength) {}
 
-       new Sphere(4,8,15), // unit sphere at (4,8,15)
+double Cube::area() {
+    return 6 * edgeLength * edgeLength;
+}
 
-       new Cube(16,23,42), // unit cube, top-left-rear corner at (16,23,42)
+double Cube::volume() {
+    return edgeLength * edgeLength * edgeLength;
+}
 
-       new Sphere(16,23,42,108), // sphere at (16,23,42), radius is 108
+// Sphere implementation
 
-       new Cube(4,8,15,16) // top-left-rear corner at (4,8,15), edge length is 16
+Sphere::Sphere() : x(0), y(0), z(0), radius(1) {}
 
-     };
+Sphere::Sphere(double radius) : x(0), y(0), z(0), radius(radius) {}
 
-   int lengthOfVolumetric= sizeof(volumetric)/sizeof(VolumetricShape*);
+Sphere::Sphere(double x, double y, double z) : x(x), y(y), z(z), radius(1) {}
 
-  
+Sphere::Sphere(double x, double y, double z, double radius) : x(x), y(y), z(z), radius(radius) {}
 
-   for (int i=0;i<lengthOfVolumetric;++i)
+double Sphere::area() {
+    return 4 * M_PI * radius * radius;
+}
 
-       cout << "Volume of " << i << "th volumetric shape is "
-
-            << volumetric[i]->volume() << endl ;
-
- 
-
-   Shape **shapes;
-
-   int lengthOfShapes=lengthOfPlanar+lengthOfVolumetric;
-
-   shapes= new Shape*[lengthOfShapes];
-
- 
-
-   for (int i=0;i<lengthOfPlanar;++i)
-
-       shapes[i]=planar[i];     
-
-   for (int i=0,j=lengthOfPlanar;i<lengthOfVolumetric;++i,++j)
-
-       shapes[j]=volumetric[i];       
-
- 
-
-   for (int i=0;i<lengthOfShapes;++i)
-
-       cout << "Area of " << i << "th shape is " << shapes[i]->area() << endl ;
-
-  
-
-   for (int i=0;i<lengthOfPlanar;++i)
-
-       delete planar[i];
-
-   for (int i=0;i<lengthOfVolumetric;++i)
-
-       delete volumetric[i];
-
-   delete []shapes;           
-
-   return 0;
-
+double Sphere::volume() {
+    return (4 / 3) * M_PI * radius * radius * radius;
 }
